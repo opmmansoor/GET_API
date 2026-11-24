@@ -1,19 +1,25 @@
 import express from "express";
-import userRoutes from "./routes/userRoutes.js"
+import userRoutes from "./routes/userRoutes.js";
 
 const app = express();
 
-// Middleware to read JSON data
-app.use(express.json);
+const PORT = 5000;
 
-// User routes
-app.use("/api/users", userRoutes)
+// Middleware
+app.use(express.json());
 
-app.get("/", (req,res) => {
-    res.send("Welcom to Express API")
+// Home route
+app.get("/", (req, res) => {
+    res.status(200).json({
+        success: true,
+        message: "User API is running"
+    });
 });
 
-app.listen(6000, () => {
-    console.log("Server Running at http://localhost:6000");
-    
-})
+// User routes
+app.use("/api/users", userRoutes);
+
+// Start server
+app.listen(PORT, () => {
+    console.log(`Server running at http://localhost:${PORT}`);
+});
