@@ -1,8 +1,9 @@
 import express from "express";
+import router from "./router/userRouter.js"
 
 const app = express();
 
-const PORT = 5000;
+const PORT = 3001;
 
 // Middleware
 app.use(express.json());
@@ -14,6 +15,9 @@ app.get("/", (req, res) => {
         message: "Basic Server is Running"
     });
 });
+
+//User routes
+app.use("/api", router);
 
 // Start server
 app.listen(PORT, () => {
