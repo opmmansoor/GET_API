@@ -1,5 +1,4 @@
 import express from "express";
-import userRoutes from "./routes/userRoutes.js";
 
 const app = express();
 
@@ -12,12 +11,9 @@ app.use(express.json());
 app.get("/", (req, res) => {
     res.status(200).json({
         success: true,
-        message: "User API is running"
+        message: "Basic Server is Running"
     });
 });
-
-// User routes
-app.use("/api/users", userRoutes);
 
 // Start server
 app.listen(PORT, () => {
